@@ -1,0 +1,53 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+{% if terror %}
+<script>
+    alert('This Bidding had not worked that time');
+    window.location = "{% url 'view_auction' 0 %}";
+</script>
+{% endif %}
+
+<div class="hero-section">
+    <div class="container">
+        <ul class="breadcrumb">
+        </ul>
+    </div>
+    <div class="bg_img hero-bg bottom_center" data-background="{% static 'assets/images/banner/hero-bg.png' %}"></div>
+  </div>
+  
+
+<div align="center" class="container" style="padding:4%;background:white;margin:4%;height:400px">
+    <div align="center" class="container" style="padding:10px;padding-top:0;background-color:#3f22b3 !important;width:68%;height:300px">
+    <div class="row">
+        <div class="col-md-12">
+            <img src="{% static 'assets/images/source.gif' %}" style="width:100%;height:120px">
+        </div>
+    </div>
+        <div class="row" >
+        <div class="col-md-3">
+            <img src="{{pro.user.image.url}}" style="width:100%">
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div align="left" class="col-md-5" style="font-family:cursive;color:white !important">
+                    <h5 style="color:white !important">Bidder Name : </h5>
+                    <h5 style="color:white !important">Phone : </h5>
+                    <h5 style="color:white !important">Email : </h5>
+                    <h5 style="color:white !important">Sold by : </h5>
+                    <h5 style="color:white !important">Your offer Price : </h5>
+                </div>
+                <div align="left" class="col-md-7" style="color:white !important">
+                    <h5><u  style="color:white !important">{{pro.user.user.first_name}} {{pro.user.user.last_name}}</u></h5>
+                    <h5><u style="color:white !important">{{pro.user.contact}}</u></h5>
+                    <h5><u style="color:white !important">{{pro.user.user.email}}</u></h5>
+                    <h5 style="color:white !important">CFA. <u >{{pro.new_price}}.00 /-</u></h5>
+                    <h5 style="color:white !important">CFA. <u >{{pro.aucted_product.product.min_price}}.00 /-</u></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+{% endblock %}

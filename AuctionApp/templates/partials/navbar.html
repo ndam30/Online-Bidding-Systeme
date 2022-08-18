@@ -1,0 +1,168 @@
+{% load static%}
+
+    <!--============= ScrollToTop Section Starts Here =============-->
+    <div class="overlayer" id="overlayer">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+    </div>
+    <a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+    <div class="overlay"></div>
+    <!--============= ScrollToTop Section Ends Here =============-->
+
+
+    <!--============= Header Section Starts Here =============-->
+
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-wrapper">
+                    <ul class="customer-support">
+                        <li>
+                            <a href="#0" class="mr-3"><i class="fas fa-phone-alt"></i><span class="ml-2 d-none d-sm-inline-block">Customer Support</span></a>
+                        </li>
+                        <li>
+                            <i class="fas fa-globe"></i>
+                            <select name="language" class="select-bar">
+                                <option value="en">En</option>
+                                <option value="Bn">Fr</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <ul class="cart-button-area">
+                        <li>
+                            <a href="#0" class="cart-button"><i class="flaticon-shopping-basket"></i><span class="amount">01</span></a>
+                        </li>                        
+                        <li>
+                            <a href="sign-in.html" class="user-button"><i class="flaticon-user"></i></a>
+                        </li>                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <div class="header-bottom">
+            <div class="container">
+                <div class="header-wrapper">
+                    <div class="logo">
+                        <a href="{% url 'home' %}">
+                            <img src="{% static 'assets/images/logodev.png' %}" alt="logo" style="height: 70px; width: 70px; border-radius: 2px black;">
+                        </a>
+                    </div>
+                    {% if request.user.username %}
+                    {% if error == "pat" %}
+            
+                    <ul class="menu ml-auto">
+                        <li>
+                            <a href="{% url 'profile1' %}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'view_auction' 0 %}">Auction</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'bidding_status' %}">Bidding Status</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'feedback' %}">Feedback</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'change_password1' %}">CHANGE PASSWORD</a>
+                        </li>
+
+                    </ul>
+                    <form class="search-form" action="/search/" method="get">
+                        <input type="text" placeholder="Search for brand, model...." name="query">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                    <div class="search-bar d-md-none">
+                        <a href="#0"><i class="fas fa-search"></i></a>
+                    </div>
+                    <div class="header-bar d-lg-none">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    {% else %}
+
+                    <ul class="menu ml-auto">
+                        <li>
+                            <a href="{% url 'profile1' %}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'add_product' %}">Add Product</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'all_product' %}">All Product</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'bidding_status2' %}">Bidding Status</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'feedback' %}">Feedback</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'change_password1' %}">CHANGE PASSWORD</a>
+                        </li>
+
+                    </ul>
+                    {% endif %}
+                    {% else %}
+                    <ul class="menu ml-auto">
+                        <li>
+                            <a href="{% url 'home'  %}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'all_product' %}">All Product</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'about' %}">About</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'contact' %}">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'login_user' %}">User Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'login_admin' %}">Admin Login</a>
+                        </li>
+
+                    </ul>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                    <ul class = "menu ml-auto">
+                    <li>
+                        <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
+                    </li>
+                    </ul>
+                    {% if not request.user.is_staff %}
+                    <ul class="menu ml-auto">
+                        <li>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <ion-icon style="margin-right:4px;color:black" name="person-circle-sharp"></ion-icon>Welcome {{request.user.first_name}}
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'profile1' %}">VIEW PROFILE</a>
+                        <a class="dropdown-item" href="{% url 'edit_profile1' %}">EDIT PROFILE</a>
+                        <a class="dropdown-item" href="{% url 'change_password1' %}">CHANGE PASSWORD</a>
+                      </div>
+
+                    </li>
+                    </ul>  
+                    {% else %}
+                    <li class="nav-item">
+                        <h5  class="nav-link"><ion-icon style="margin-right:4px;color:white" name="person-circle-sharp"></ion-icon>Welcome {{request.user.username}}</h5>
+                    </li>
+                    {% endif %}
+
+                    {% else %}
+
+                    <ul class="menu">
+                    </ul>
+
+                  {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </header>

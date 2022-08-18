@@ -1,0 +1,25 @@
+{% extends 'partials/base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="hero-section">
+      <div class="container">
+          <ul class="breadcrumb">
+          </ul>
+      </div>
+      <div class="bg_img hero-bg bottom_center" data-background="{% static 'assets/images/banner/hero-bg.png' %}"></div>
+    </div>
+    
+
+<div class="container" style="width:100%;background:white">
+      <center><h2 style="margin-top:5%;font-weight:bold;font-family : 'Monotype Corsiva' ;color:red">Participated Bidder</h2></center>
+<hr>
+ <div class="container" style="padding:20px;width:20%;border:1px solid grey">
+     <h5 align="center" style="color:red"> {{message1}}</h5>
+     {% for i in part %}
+   	<h5 align="center" style="color:blue">{{i.user.user.username}}</h5>
+     {% endfor %}
+ </div>
+
+      </div>
+{% endblock %}
